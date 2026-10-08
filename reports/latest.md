@@ -22,3 +22,8 @@ That historical audit covers 23 accessible repositories and 59 open PRs. Later s
 5. Finalize with COMPLETE or PARTIAL, never leave RUNNING indefinitely; report incomplete coverage explicitly.
 
 [Repository inventory](estate.md) · [PR operations](prs/index.md) · [Security](security.md) · [Releases](releases.md)
+
+
+## 2026-10-08 — Delivery reliability incident
+
+The scheduled Greenkeeper task has recorded executions, but no verified new comprehensive unattended report has been published since the historical audit linked above. The automation instructions were replaced with a shorter delivery-first procedure: attempt a bounded GitHub write at run start, verify by readback, stop repeated blocked writes, continue remediation, and finalize PARTIAL/COMPLETE when possible. This is an **operator configuration change**, not proof that the next unattended run succeeds. The next run must demonstrate independent successful publication.
