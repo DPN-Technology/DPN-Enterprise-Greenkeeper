@@ -1,15 +1,7 @@
-# DPN Greenkeeper — Latest Estate Report
+# DPN Greenkeeper — Run status
 
-**Status: RUNNING — inventory and remediation in progress**
+2026-10-08 06:57 EDT: Fresh organization inventory found 23 repositories and 59 open pull requests.
 
-**Run started:** 2026-10-08 03:25 EDT (2026-10-08 07:25 UTC)
+Aqua Labs PR #42: committed a CodeQL workflow security hardening change on its existing branch. Commit: de5aa542f036f7a144c887f084146c751d3c4fc1.
 
-This is a live run-start marker, **not** a claim that any PR has passed, merged, or been released. Previous results remain unverified until refreshed. Full results will replace this marker after evidence-based inspection.
-
-## Current verification
-- Accessible repository inventory: pending fresh pagination.
-- Open PR inventory and head SHA/check review/protection evidence: pending.
-- Remediation, merges and releases: none confirmed in this run yet.
-
-## Delivery integrity
-If the run is interrupted, treat this page as incomplete. No secrets or private logs are included.
+Status: PARTIAL. The remaining UI evidence workflow policy findings and the full estate gate review are not yet resolved. No merges or releases completed.
