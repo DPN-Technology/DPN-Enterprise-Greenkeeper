@@ -92,7 +92,7 @@ def main():
     write("reports/latest.md", f"# DPN Enterprise Audit — RUNNING\n\nRun: {RUN_ID} UTC. Previous completed: {prior_id}.\n")
     publish(f"audit: start {RUN_ID}")
 
-    repos = pages(f"/orgs/{ORG}/repos?type=all")
+    repos = pages(f"/orgs/{ORG}/repos?type=all")\n    if not repos:\n        ERRORS.append("No organization repositories returned; audit token permissions or API access may be insufficient")
     repo_rows, pr_rows, change_rows, security_rows, release_rows = [], [], [], [], []
     current = {"run_id": RUN_ID, "repositories": {}}
     total_prs = 0
@@ -147,7 +147,7 @@ def main():
     for missing in sorted(prev_repos - set(current["repositories"])):
         change_rows.append([missing, "PRESENT", "MISSING", "No longer accessible or removed", UNKNOWN])
     status = "PARTIAL" if ERRORS else "COMPLETE"
-    eastern = NOW.astimezone(dt.timezone(dt.timedelta(hours=-4))).strftime("%Y-%m-%d %H:%M EDT")
+    from zoneinfo import ZoneInfo\n    eastern = NOW.astimezone(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M %Z")
     intro = f"# DPN Enterprise Audit — {status}\n\n**Run:** {RUN_ID} | **UTC:** {NOW.isoformat()} | **Eastern:** {eastern}\n\n**Repositories:** {len(repos)} | **Open PRs:** {total_prs} | **Changes detected:** {len(change_rows)} | **Errors:** {len(ERRORS)}\n\n"
     if ERRORS:
         intro += "**Coverage limitations:** " + "; ".join(ERRORS[:30]) + "\n\n"
