@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+      - name: Validate audit script syntax
+        run: python3 -m py_compile scripts/hourly_audit.py
       - name: Audit private organization repositories and publish reports
         env:
           DPN_AUDIT_TOKEN: ${{ secrets.DPN_AUDIT_TOKEN }}
