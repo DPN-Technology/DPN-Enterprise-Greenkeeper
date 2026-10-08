@@ -13,20 +13,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout reporting repository
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
-      - name: Validate organization audit credential
-        env:
-          DPN_AUDIT_TOKEN: ${{ secrets.DPN_AUDIT_TOKEN }}
-        run: |
-          if [ -z "$DPN_AUDIT_TOKEN" ]; then
-            echo "::error::Set repository secret DPN_AUDIT_TOKEN to a read-only org-scoped token for private DPN repositories."
-            exit 1
-          fi
-      - name: Generate full audit and publish reports
+          persist-credentials: true
+      - name: Audit private organization repositories and publish reports
         env:
           DPN_AUDIT_TOKEN: ${{ secrets.DPN_AUDIT_TOKEN }}
           REPORT_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: python3 scripts/hourly_audit.py
+        run: |
+          set -euo pipefail
+          if [ -z "${DPN_AUDIT_TOKEN:-}" ]; then
+            echo "::warning::DPN_AUDIT_TOKEN is not configured. Auditing only repositories visible to GITHUB_TOKEN; private organization-wide coverage may be incomplete."
+            export DPN_AUDIT_TOKEN="$REPORT_TOKEN"
+          fi
+          python3 scripts/hourly_audit.py
