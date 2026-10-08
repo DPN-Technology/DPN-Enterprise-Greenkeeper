@@ -1,15 +1,15 @@
 # DPN Greenkeeper — Latest Estate Report
 
-**Reporting status:** DEGRADED — hourly automation executed, but full estate report publication has not succeeded.
+**Status: RUNNING — inventory and remediation in progress**
 
-**Last verified scheduler execution:** 2026-10-08 03:06 EDT (07:06 UTC).
+**Run started:** 2026-10-08 03:25 EDT (2026-10-08 07:25 UTC)
 
-**Evidence:** The automation is enabled with an hourly recurrence; scheduler did not return a next-run timestamp. The prior report remained at initialization as of the inspection at approximately 03:23 EDT.
+This is a live run-start marker, **not** a claim that any PR has passed, merged, or been released. Previous results remain unverified until refreshed. Full results will replace this marker after evidence-based inspection.
 
-**Inventory / PR scoreboard:** Not verified for this reporting cycle. Prior numbers must not be represented as current.
+## Current verification
+- Accessible repository inventory: pending fresh pagination.
+- Open PR inventory and head SHA/check review/protection evidence: pending.
+- Remediation, merges and releases: none confirmed in this run yet.
 
-**Fixes, merges, releases:** No results verified in this reporting cycle.
-
-**Corrective action:** Updated the existing hourly automation to publish a run-start marker immediately, then incremental verified findings and a final report. If writes are rejected, it must report the exact failure instead of silently skipping publication.
-
-**Next validation:** Confirm the next run updates this file and creates a timestamped history snapshot. This diagnostic is not a substitute for the full estate inventory.
+## Delivery integrity
+If the run is interrupted, treat this page as incomplete. No secrets or private logs are included.
